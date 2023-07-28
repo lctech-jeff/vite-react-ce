@@ -3,17 +3,15 @@ import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
 import { useOrderProducts } from '@/application/orderProducts'
 import type { User } from '@/domain/user'
 import type { Cart } from '@/domain/cart'
-function CheckoutBtn({
-  text,
-  onCheckoutSuccess,
-  onCheckoutFailure,
-  className,
-}: {
+
+type Props = {
   text: string
-  onCheckoutSuccess: ({ status, user, cart }: { status: string; user: User; cart: Cart }) => void
-  onCheckoutFailure: ({ status }: { status: string }) => void
-  className: string
-}) {
+  onCheckoutSuccess?: ({ status, user, cart }: { status: string; user: User; cart: Cart }) => void
+  onCheckoutFailure?: ({ status }: { status: string }) => void
+  className?: string
+}
+
+function CheckoutBtn({ text, onCheckoutSuccess = () => { }, onCheckoutFailure = () => { }, className = '' }: Props) {
   const { user } = useUserStorage()
   const { cart } = useCartStorage()
   const { orderProducts } = useOrderProducts()
@@ -37,9 +35,7 @@ function CheckoutBtn({
   }
   return (
     <div className={className}>
-      <Btn onClick={handleCheckout}>
-        {text}&nbsp;({cart?.products.length})
-      </Btn>
+      <Btn onClick={handleCheckout}>{`${text} (${cart?.products.length})`}</Btn>
     </div>
   )
 }

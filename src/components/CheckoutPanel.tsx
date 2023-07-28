@@ -1,6 +1,11 @@
 import { useOrdersStorage } from '@/services/storageAdapter'
 
-function CheckoutPanel({ title, className }: { title: string; className: string }) {
+type Props = {
+  title: string
+  className?: string
+}
+
+function CheckoutPanel({ title, className = '' }: Props) {
   const { orders } = useOrdersStorage()
 
   const orderList = orders.map(item => {

@@ -1,5 +1,10 @@
-function Btn(props: any) {
-  const { children, className, onClick } = props
+type Props = {
+  children: string
+  className?: string
+  onClick?: () => void
+}
+
+function Btn({ children, className = '', onClick = () => { } }: Props) {
   return (
     <button
       type="button"

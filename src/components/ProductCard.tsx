@@ -5,9 +5,11 @@ import type { Product } from '@/domain/product'
 import { useAddToCart } from '@/application/addToCart'
 import { useUserStorage } from '@/services/storageAdapter'
 
-function ProductCard(props: any) {
-  const { product }: { product: Product } = props
+type Props = {
+  product: Product
+}
 
+function ProductCard({ product }: Props) {
   const { user } = useUserStorage()
   const { addToCart } = useAddToCart()
 

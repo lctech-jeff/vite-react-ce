@@ -1,7 +1,11 @@
 import ProductCard from '@/components/ProductCard'
 import { useProductStorage } from '@/services/storageAdapter'
 
-function ProductList({ className }: { className: string }) {
+type Props = {
+  className?: string
+}
+
+function ProductList({ className }: Props) {
   const { cookies } = useProductStorage()
   const cardList = cookies.map(item => <ProductCard key={item.id} product={item} />)
 

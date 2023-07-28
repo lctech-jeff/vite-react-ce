@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/jeff-react-ce.umd.cjs",
+  "module": "./dist/jeff-react-ce.js",
+  "exports": {
+    ".": {
+      "import": "./dist/jeff-react-ce.js",
+      "require": "./dist/jeff-react-ce.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
