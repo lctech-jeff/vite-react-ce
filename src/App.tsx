@@ -1,30 +1,34 @@
 import { useUserStorage } from '@/services/storageAdapter'
+import Btn from '@/components/Btn'
 
 import '@/App.css'
+import { useMemo } from 'react'
+
 function App() {
-  const { user, updateUser } = useUserStorage()
-  const id = user.id;
+  const { user, updateUser, clearUser } = useUserStorage()
+  const isLogin = useMemo(() => !!user.id, [user])
+
+  const logout = () => {
+    clearUser()
+    setTimeout(() => {
+      window.location.href = '/'
+    }, 200)
+  }
+  const login = () => {
+    updateUser({
+      id: '100001',
+      name: 'Jeff',
+      email: 'jeff@lctech.com',
+      preferences: ['cherry'],
+      allergies: ['peanuts'],
+    })
+  }
 
   return (
     <>
-      <h1>{id}</h1>
-      <div className="card">
-        <button onClick={() => updateUser({
-          id: '100001',
-          name: 'Jeff',
-          email: 'jeff@lctech.com',
-          preferences: ['cherry'],
-          allergies: ['peanuts'],
-        })}>
-          Login
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Btn className="btn" onClick={() => isLogin ? logout() : login()}>
+        {isLogin ? `嗨！${user.name}` : '登入'}
+      </Btn>
     </>
   )
 }
