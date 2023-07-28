@@ -13,6 +13,7 @@ const orderStore = createSlice({
   reducers: {
     updateOrders(state, action) {
       state.orders = [...action.payload]
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.orders))
     },
   },
 })
