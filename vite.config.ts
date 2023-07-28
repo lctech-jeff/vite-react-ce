@@ -13,16 +13,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  build: {
-    lib: {
-      entry: './src/main.ce.ts',
-      name: 'jeff-react-ce',
-      fileName: 'jeff-react-ce',
-    },
-    sourcemap: true,
-    minify: false,
-  },
-  define: {
-    'process.env': process.env,
-  },
 })

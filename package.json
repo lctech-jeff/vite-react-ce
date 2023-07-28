@@ -3,17 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/jeff-react-ce.umd.cjs",
-  "module": "./dist/jeff-react-ce.js",
-  "exports": {
-    ".": {
-      "import": "./dist/jeff-react-ce.js",
-      "require": "./dist/jeff-react-ce.umd.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@r2wc/react-to-web-component": "^2.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
