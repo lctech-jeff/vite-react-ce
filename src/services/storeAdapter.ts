@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from '@/app/hooks';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { useCallback } from 'react';
 import type { User } from '@/domain/user'
 import type { Cart } from '@/domain/cart'
